@@ -18,51 +18,34 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background font-sans antialiased">
-        {/* Header */}
-        <header className="bg-white border-b border-amber-200">
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="text-3xl font-bold text-amber-600">
-                TempleRenew
-              </Link>
-              <div className="flex items-center space-x-6">
-                <nav className="hidden md:flex space-x-6">
-                  <Link href="/" className="text-amber-600 hover:text-amber-700">
-                    Home
-                  </Link>
-                  <Link href="/pages/protocols" className="text-amber-600 hover:text-amber-700">
-                    Protocols
-                  </Link>
-                  <Link href="/about" className="text-amber-600 hover:text-amber-700">
-                    About
-                  </Link>
-                </nav>
-                <button className="p-2 text-amber-600 hover:text-amber-700">
-                  <Search size={24} />
-                </button>
-              </div>
+        <div className="relative flex min-h-screen flex-col">
+          <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div className="container flex h-14 items-center">
+              <nav className="flex items-center space-x-6 text-sm font-medium">
+                {/* Add your navigation items here */}
+              </nav>
             </div>
-          </div>
-        </header>
-
-        {/* Main Content */}
-        <main>
-          {children}
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-amber-50 py-8">
-          <div className="container mx-auto px-4 text-center text-amber-800">
-            <p>© 2025 TempleRenew. Your journey to holistic health starts here.</p>
-          </div>
-        </footer>
+          </header>
+          <main className="flex-1">
+            <div className="container py-6">
+              {children}
+            </div>
+          </main>
+          <footer className="border-t">
+            <div className="container flex h-14 items-center">
+              <p className="text-sm text-muted-foreground">
+                © {new Date().getFullYear()} Your Company. All rights reserved.
+              </p>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
-  );
+  )
 }

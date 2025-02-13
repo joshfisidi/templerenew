@@ -14,62 +14,29 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-amber-200">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-amber-600">TempleRenew</h1>
-            <div className="flex items-center space-x-6">
-              <nav className="hidden md:flex space-x-6">
-                <a href="#" className="text-amber-600 hover:text-amber-700">Home</a>
-                <a href="/protocols" className="text-amber-600 hover:text-amber-700">Protocols</a>
-                <a href="#" className="text-amber-600 hover:text-amber-700">About</a>
-              </nav>
-              <button className="p-2 text-amber-600 hover:text-amber-700">
-                <Search size={24} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-amber-50 to-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-amber-800 mb-4">
-            Your Gateway to Holistic Health Knowledge
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Discover comprehensive information about health, wellness, and natural healing methods.
+    <div className="flex flex-col gap-8">
+      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
+          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+            Welcome to Your App
+          </h1>
+          <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+            Your compelling description goes here. Make it count!
           </p>
-          
-          {/* Search Command */}
-          <div className="relative w-full max-w-2xl mx-auto">
-            <Command className="rounded-lg border shadow-md bg-white">
-              <div className="flex items-center border-b px-3">
-                <Search className="mr-2 h-4 w-4 shrink-0 text-gray-500" />
-                <CommandInput 
-                  placeholder="Search health topics..." 
-                  className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-gray-500"
-                />
-              </div>
-              <CommandList className="max-h-[300px] overflow-y-auto p-2">
-                <CommandEmpty>No results found.</CommandEmpty>
-                <CommandGroup heading="Suggestions">
-                  {categories.map((category) => (
-                    <CommandItem 
-                      key={category.title}
-                      className="flex items-center px-2 py-1.5 text-sm rounded-md hover:bg-gray-100"
-                    >
-                      <span className="mr-2 text-lg">{category.icon}</span>
-                      <span>{category.title}</span>
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </div>
+        </div>
+      </section>
+
+      <section className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24">
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+            Features
+          </h2>
+          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+            Highlight your main features here
+          </p>
+        </div>
+        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+          {/* Add your feature cards here */}
         </div>
       </section>
 
