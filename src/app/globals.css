@@ -60,13 +60,20 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+  
+  html,
   body {
-    @apply bg-background text-foreground;
+    @apply antialiased min-h-screen bg-background text-foreground;
+  }
+}
+
+/* Add some basic responsive container styles */
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
   }
 }

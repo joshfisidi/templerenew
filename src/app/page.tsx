@@ -45,27 +45,31 @@ export default function Home() {
           </p>
           
           {/* Search Command */}
-          <Card className="max-w-2xl mx-auto">
-            <CardContent className="py-3">
-              <Command className="rounded-lg border shadow-md">
-                <div className="flex items-center border-b px-3">
-                  <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
-                  <CommandInput placeholder="Search health topics..." className="flex-1" />
-                </div>
-                <CommandList>
-                  <CommandEmpty>No results found.</CommandEmpty>
-                  <CommandGroup heading="Suggestions">
-                    {categories.map((category) => (
-                      <CommandItem key={category.title}>
-                        <span className="mr-2">{category.icon}</span>
-                        {category.title}
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </CardContent>
-          </Card>
+          <div className="relative w-full max-w-2xl mx-auto">
+            <Command className="rounded-lg border shadow-md bg-white">
+              <div className="flex items-center border-b px-3">
+                <Search className="mr-2 h-4 w-4 shrink-0 text-gray-500" />
+                <CommandInput 
+                  placeholder="Search health topics..." 
+                  className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-gray-500"
+                />
+              </div>
+              <CommandList className="max-h-[300px] overflow-y-auto p-2">
+                <CommandEmpty>No results found.</CommandEmpty>
+                <CommandGroup heading="Suggestions">
+                  {categories.map((category) => (
+                    <CommandItem 
+                      key={category.title}
+                      className="flex items-center px-2 py-1.5 text-sm rounded-md hover:bg-gray-100"
+                    >
+                      <span className="mr-2 text-lg">{category.icon}</span>
+                      <span>{category.title}</span>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </div>
         </div>
       </section>
 
@@ -77,13 +81,16 @@ export default function Home() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.map((category) => (
-              <Card key={category.title} className="hover:shadow-lg transition-shadow">
+              <Card 
+                key={category.title} 
+                className="hover:shadow-lg transition-shadow bg-white border border-gray-200"
+              >
                 <CardContent className="p-6">
-                  <div className="flex items-center">
-                    <span className="text-2xl mr-2">{category.icon}</span>
+                  <div className="flex items-center space-x-4">
+                    <span className="text-2xl">{category.icon}</span>
                     <div>
-                      <h4 className="font-semibold text-amber-800">{category.title}</h4>
-                      <p className="text-sm text-gray-600">{category.description}</p>
+                      <h4 className="font-semibold text-gray-900">{category.title}</h4>
+                      <p className="text-sm text-gray-600 mt-1">{category.description}</p>
                     </div>
                   </div>
                 </CardContent>
