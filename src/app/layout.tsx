@@ -28,34 +28,16 @@ export default function RootLayout({
           <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center justify-between">
               <Link href="/" className="flex items-center space-x-2">
-                <span className="text-2xl font-bold text-primary">TempleRenew</span>
+                <span className="text-2xl font-bold text-slate-200 dark:text-slate-100">TempleRenew</span>
               </Link>
               
               <nav className="flex items-center space-x-6 text-sm font-medium">
                 <Link 
-                  href="/" 
-                  className="text-foreground/60 transition-colors hover:text-foreground"
-                >
-                  Home
-                </Link>
-                <Link 
                   href="/protocols" 
-                  className="text-foreground/60 transition-colors hover:text-foreground"
+                  className="text-slate-200 transition-colors hover:text-slate-200 dark:text-slate-200 dark:hover:text-slate-100"
                 >
                   Protocols
                 </Link>
-                <Link 
-                  href="/about" 
-                  className="text-foreground/60 transition-colors hover:text-foreground"
-                >
-                  About
-                </Link>
-                <button 
-                  className="p-2 text-foreground/60 transition-colors hover:text-foreground"
-                  aria-label="Search"
-                >
-                  <Search size={20} />
-                </button>
               </nav>
             </div>
           </header>
@@ -64,26 +46,12 @@ export default function RootLayout({
             {children}
           </main>
 
-          <footer className="border-t bg-muted/50">
+          <footer className="border-t bg-slate-50 dark:bg-slate-200">
             <div className="container py-6">
               <div className="flex flex-col items-center justify-between gap-4 md:h-14 md:flex-row md:py-0">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-slate-200 dark:text-slate-400">
                   © {new Date().getFullYear()} TempleRenew. Your journey to holistic health starts here.
                 </p>
-                <nav className="flex items-center space-x-6 text-sm">
-                  <Link 
-                    href="/privacy" 
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    Privacy
-                  </Link>
-                  <Link 
-                    href="/terms" 
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    Terms
-                  </Link>
-                </nav>
               </div>
             </div>
           </footer>

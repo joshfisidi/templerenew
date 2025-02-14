@@ -5,7 +5,6 @@ const nextConfig = {
   images: {
     domains: [],
   },
-  postcss: true,
 };
 
 export default nextConfig;

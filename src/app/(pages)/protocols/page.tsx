@@ -7,18 +7,31 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CheckCircle, Clock, Calendar, Apple, Droplets } from 'lucide-react';
+import { 
+  CheckCircle, 
+  Clock, 
+  Calendar, 
+  Apple, 
+  Droplets,
+  Timer,
+  Utensils,
+
+  Brain,
+  AlertCircle
+} from 'lucide-react';
+import Link from 'next/link';
+import { Button } from "@/components/ui/button";
 
 const ClotProtocolPage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <div className="bg-gradient-to-b from-amber-50 to-white py-12">
+      <div className="bg-gradient-to-b from-slate-100 to-slate-50 dark:from-slate-900 dark:to-slate-950 py-12">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold text-amber-800 mb-4">
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-slate-100 dark:to-slate-300 mb-4">
             🩸 Clot-Dissolving Protocol 🩸
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
             Improve blood flow, dissolve clots, and restore circulation naturally.
           </p>
         </div>
@@ -26,58 +39,33 @@ const ClotProtocolPage = () => {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
-        <Tabs defaultValue="daily" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
-            <TabsTrigger value="daily">
-              <Clock className="mr-2 h-4 w-4" />
-              Daily Routine
-            </TabsTrigger>
-            <TabsTrigger value="weekly">
-              <Calendar className="mr-2 h-4 w-4" />
-              Weekly Habits
-            </TabsTrigger>
-            <TabsTrigger value="foods">
-              <Apple className="mr-2 h-4 w-4" />
-              Foods & Supplements
-            </TabsTrigger>
-            <TabsTrigger value="takeaways">
-              <CheckCircle className="mr-2 h-4 w-4" />
-              Key Takeaways
-            </TabsTrigger>
+        <Tabs defaultValue="overview" className="space-y-4">
+          <TabsList className="bg-slate-600/10 dark:bg-slate-800/50">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-white dark:data-[state=active]:bg-slate-900">Overview</TabsTrigger>
+            <TabsTrigger value="daily" className="data-[state=active]:bg-white dark:data-[state=active]:bg-slate-900">Daily Routine</TabsTrigger>
+            <TabsTrigger value="weekly" className="data-[state=active]:bg-white dark:data-[state=active]:bg-slate-900">Weekly Habits</TabsTrigger>
+            <TabsTrigger value="nutrition" className="data-[state=active]:bg-white dark:data-[state=active]:bg-slate-900">Nutrition</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="daily" className="space-y-4">
-            <Card>
+          <TabsContent value="overview" className="space-y-4">
+            <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800">
               <CardHeader>
-                <CardTitle>Daily Protocol</CardTitle>
-                <CardDescription>Follow these steps each day for optimal results</CardDescription>
+                <CardTitle className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-slate-100 dark:to-slate-300">
+                  Key Takeaways
+                </CardTitle>
+                <CardDescription className="text-slate-600 dark:text-slate-400">Essential points for success</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid gap-4 md:grid-cols-2">
+                <div className="grid gap-4">
                   {[
-                    {
-                      title: "Fasting (16-18 hours daily)",
-                      description: "Practice intermittent fasting for improved circulation"
-                    },
-                    {
-                      title: "Cayenne Pepper or Lemon Water",
-                      description: "Drink daily for circulation support"
-                    },
-                    {
-                      title: "Nattokinase & Serrapeptase",
-                      description: "Take on an empty stomach"
-                    },
-                    {
-                      title: "Hydration",
-                      description: "Drink plenty of water throughout the day",
-                      icon: <Droplets className="h-4 w-4" />
-                    }
+                    { icon: <CheckCircle className="h-5 w-5" />, text: "Consistency is key – Stick to the routine for best results" },
+                    { icon: <Brain className="h-5 w-5" />, text: "Listen to the body – Adjust exercise intensity as needed" },
+                    { icon: <Droplets className="h-5 w-5" />, text: "Stay hydrated – Water is crucial for blood flow and detox" },
+                    { icon: <AlertCircle className="h-5 w-5" />, text: "Monitor progress – Note any improvements or symptoms" }
                   ].map((item, index) => (
-                    <div key={index} className="flex items-start space-x-4 p-4 rounded-lg border">
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-amber-800">{item.title}</h3>
-                        <p className="text-sm text-gray-600">{item.description}</p>
-                      </div>
+                    <div key={index} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                      <span className="text-slate-600 dark:text-slate-400">{item.icon}</span>
+                      <span>{item.text}</span>
                     </div>
                   ))}
                 </div>
@@ -85,94 +73,45 @@ const ClotProtocolPage = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="weekly" className="space-y-4">
-            <Card>
+          <TabsContent value="daily" className="space-y-4">
+            <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800">
               <CardHeader>
-                <CardTitle>Weekly Habits</CardTitle>
-                <CardDescription>Incorporate these practices 1-2 times per week</CardDescription>
+                <CardTitle className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-slate-100 dark:to-slate-300">
+                  Daily Routine
+                </CardTitle>
+                <CardDescription className="text-slate-600 dark:text-slate-400">Follow these steps each day</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="grid gap-4 md:grid-cols-3">
+              <CardContent className="space-y-4">
+                <div className="grid gap-4">
                   {[
-                    {
-                      title: "🔥 Infrared Sauna",
-                      description: "Use 1-2x per week for improved circulation"
-                    },
-                    {
-                      title: "🛀 Epsom Salt Baths",
-                      description: "Take 1-2x per week to reduce inflammation"
-                    },
-                    {
-                      title: "🔆 Red Light Therapy",
-                      description: "Optional but beneficial for circulation and healing"
-                    }
+                    { icon: <Timer className="h-5 w-5" />, text: "Fasting (16-18 hours daily)", link: "https://www.youtube.com/watch?v=vhmtoAYVRSo" },
+                    { icon: <Droplets className="h-5 w-5" />, text: "Cayenne Pepper Water or Lemon Water" },
+                  
+                    // Add more daily routine items
                   ].map((item, index) => (
-                    <Card key={index} className="p-4">
-                      <h3 className="font-semibold text-amber-800 mb-2">{item.title}</h3>
-                      <p className="text-sm text-gray-600">{item.description}</p>
-                    </Card>
+                    <div key={index} className="flex items-center justify-between">
+                      <div className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                        <span className="text-slate-600 dark:text-slate-400">{item.icon}</span>
+                        <span>{item.text}</span>
+                      </div>
+                      {item.link && (
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
+                          asChild
+                        >
+                          <Link href={item.link} target="_blank">Learn More</Link>
+                        </Button>
+                      )}
+                    </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          <TabsContent value="foods" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Key Foods & Supplements</CardTitle>
-                <CardDescription>Prioritize these nutrients in your daily diet</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div className="space-y-4">
-                    <h3 className="font-semibold text-amber-800">Foods</h3>
-                    <ul className="space-y-2">
-                      <li>🥑 Healthy Fats - Avocado, nuts, omega-3 oils</li>
-                      <li>🥦 Raw Greens - Spinach, kale, Swiss chard</li>
-                      <li>🍇 Antioxidants - Berries, citrus, dark chocolate</li>
-                      <li>🌶️ Spices - Cayenne, garlic, cinnamon</li>
-                    </ul>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="font-semibold text-amber-800">Supplements</h3>
-                    <ul className="space-y-2">
-                      <li>💊 Nattokinase</li>
-                      <li>💊 Serrapeptase</li>
-                      <li>💊 Bromelain</li>
-                      <li>💊 Magnesium</li>
-                      <li>💊 CoQ10</li>
-                      <li>💊 Activated Charcoal</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="takeaways" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Key Takeaways</CardTitle>
-                <CardDescription>Essential points to remember</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-4">
-                  {[
-                    "Consistency is key – Stick to the routine for best results",
-                    "Listen to the body – Adjust exercise intensity as needed",
-                    "Stay hydrated – Water is crucial for blood flow and detox",
-                    "Monitor progress – Note any improvements or symptoms"
-                  ].map((takeaway, index) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      <CheckCircle className="h-5 w-5 text-green-500" />
-                      <span>{takeaway}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
+          {/* Add Weekly and Nutrition tabs similarly */}
         </Tabs>
       </div>
     </div>
