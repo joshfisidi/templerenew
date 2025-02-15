@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import './globals.css'
-import { Search } from 'lucide-react';
 import Link from 'next/link';
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster"
 
-// Since Geist isn't available in Google Fonts, we should use Inter as fallback
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -63,6 +62,7 @@ export default function RootLayout({
               </div>
             </footer>
           </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
