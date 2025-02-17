@@ -1,6 +1,7 @@
 "use client"
 
-import { Home, Book, Users, Settings, Menu } from "lucide-react"
+import { Home, Book, Users, Settings, Menu, Compass, BookOpen } from "lucide-react"
+import Link from "next/link"
 import {
   Sidebar,
   SidebarContent,
@@ -21,6 +22,16 @@ const mainNavItems = [
     title: "Home",
     icon: Home,
     href: "/",
+  },
+  {
+    title: "Explore",
+    icon: Compass,
+    href: "/explore",
+  },
+  {
+    title: "Compete",
+    icon: BookOpen,
+    href: "/compete",
   },
   {
     title: "Practices",
@@ -51,7 +62,6 @@ export function AppSidebar() {
           <span className="font-semibold">Temple Renew</span>
         </div>
       </SidebarHeader>
-
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Navigation</SidebarGroupLabel>
@@ -60,17 +70,16 @@ export function AppSidebar() {
               {mainNavItems.map((item) => (
                 <SidebarMenuItem key={item.href}>
                   <SidebarMenuButton asChild>
-                    <a href={item.href}>
+                    <Link href={item.href} className="flex items-center gap-2">
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-
         <SidebarGroup>
           <SidebarGroupLabel>Recent Practices</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -78,16 +87,15 @@ export function AppSidebar() {
               {/* This could be dynamically populated */}
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/practice/meditation">
+                  <Link href="/practice/meditation" className="flex items-center">
                     <span>Daily Meditation</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-
       <SidebarFooter className="border-t border-border/50 p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -107,4 +115,4 @@ export function AppSidebar() {
       </SidebarFooter>
     </Sidebar>
   )
-} 
+}
