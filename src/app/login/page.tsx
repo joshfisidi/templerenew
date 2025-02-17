@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -8,18 +9,39 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Icons } from "@/components/ui/icons"
 
 export default function LoginPage() {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault()
     setIsLoading(true)
-
-    setTimeout(() => {
+  
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      })
+  
+      const data = await response.json()
+  
+      if (!data.success) {
+        throw new Error(data.error)
+      }
+  
+      
+      router.push('/dashboard')
+      
+    } catch (error: any) {
+ 
+    } finally {
       setIsLoading(false)
-    }, 1000)
+    }
   }
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-background to-muted p-4">
       <Card className="w-full max-w-md transform transition-all duration-500 ease-out hover:scale-[1.01]">
