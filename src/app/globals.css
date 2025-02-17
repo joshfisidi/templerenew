@@ -2,50 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(222.2, 84%, 4.9%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(222.2, 84%, 4.9%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(222.2, 84%, 4.9%);
-  --primary: hsl(222.2, 47.4%, 11.2%);
-  --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(210, 40%, 96.1%);
-  --secondary-foreground: hsl(222.2, 47.4%, 11.2%);
-  --muted: hsl(210, 40%, 96.1%);
-  --muted-foreground: hsl(215.4, 16.3%, 46.9%);
-  --accent: hsl(210, 40%, 96.1%);
-  --accent-foreground: hsl(222.2, 47.4%, 11.2%);
-  --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(210, 40%, 98%);
-  --border: hsl(214.3, 31.8%, 91.4%);
-  --input: hsl(214.3, 31.8%, 91.4%);
-  --ring: hsl(222.2, 84%, 4.9%);
-  --radius: 0.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: hsl(222.2, 84%, 4.9%);
-    --foreground: hsl(210, 40%, 98%);
-    --card: hsl(222.2, 84%, 4.9%);
-    --card-foreground: hsl(210, 40%, 98%);
-    --popover: hsl(222.2, 84%, 4.9%);
-    --popover-foreground: hsl(210, 40%, 98%);
-    --primary: hsl(210, 40%, 98%);
-    --primary-foreground: hsl(222.2, 47.4%, 11.2%);
-    --secondary: hsl(217.2, 32.6%, 17.5%);
-    --secondary-foreground: hsl(210, 40%, 98%);
-    --muted: hsl(217.2, 32.6%, 17.5%);
-    --muted-foreground: hsl(215, 20.2%, 65.1%);
-    --accent: hsl(217.2, 32.6%, 17.5%);
-    --accent-foreground: hsl(210, 40%, 98%);
-    --destructive: hsl(0, 62.8%, 30.6%);
-    --destructive-foreground: hsl(210, 40%, 98%);
-    --border: hsl(217.2, 32.6%, 17.5%);
-    --input: hsl(217.2, 32.6%, 17.5%);
-    --ring: hsl(212.7, 26.8%, 83.9%);
+    /* Main theme colors */
+    --background: 60 100% 97%;
+    --foreground: 60 10% 10%;
+
+    /* Component colors */
+    --card: 60 100% 95%;
+    --card-foreground: 60 10% 10%;
+    --popover: 60 100% 97%;
+    --popover-foreground: 60 10% 10%;
+
+    /* Primary and secondary colors */
+    --primary: 60 100% 50%;
+    --primary-foreground: 60 10% 10%;
+    --secondary: 60 50% 70%;
+    --secondary-foreground: 60 10% 10%;
+
+    /* UI element colors */
+    --muted: 60 50% 90%;
+    --muted-foreground: 60 10% 40%;
+    --accent: 60 50% 80%;
+    --accent-foreground: 60 10% 10%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 60 10% 10%;
+
+    /* Border and input styles */
+    --border: 60 50% 80%;
+    --input: 60 50% 80%;
+    --ring: 60 100% 50%;
+    --radius: 0.5rem;
+
+    /* Sidebar specific colors */
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 60 10% 90%;
+    --sidebar-primary: 60 100% 50%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 60 50% 30%;
+    --sidebar-accent-foreground: 60 10% 90%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 60 100% 50%;
+  }
+
+  .dark {
+    /* Main theme colors */
+    --background: 0 0% 10%;
+    --foreground: 60 10% 90%;
+
+    /* Component colors */
+    --card: 0 0% 15%;
+    --card-foreground: 60 10% 90%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 60 10% 90%;
+
+    /* Primary and secondary colors */
+    --primary: 60 100% 50%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 60 50% 30%;
+    --secondary-foreground: 60 10% 90%;
+
+    /* UI element colors */
+    --muted: 0 0% 20%;
+    --muted-foreground: 60 10% 60%;
+    --accent: 60 50% 30%;
+    --accent-foreground: 60 10% 90%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 60 10% 90%;
+
+    /* Border and input styles */
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 60 100% 50%;
+
+    /* Sidebar specific colors */
+    --sidebar-background: 60 100% 97%;
+    --sidebar-foreground: 60 10% 10%;
+    --sidebar-primary: 60 100% 50%;
+    --sidebar-primary-foreground: 60 10% 10%;
+    --sidebar-accent: 60 50% 80%;
+    --sidebar-accent-foreground: 60 10% 10%;
+    --sidebar-border: 60 50% 80%;
+    --sidebar-ring: 60 100% 50%;
   }
 }
 
@@ -55,13 +93,5 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-}
-
-/* Add some basic responsive container styles */
-@layer components {
-  .container {
-    @apply px-4 mx-auto max-w-7xl;
   }
 }
