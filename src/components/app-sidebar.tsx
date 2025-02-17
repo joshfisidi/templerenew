@@ -55,7 +55,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader className="border-b border-border/50 p-4">
         <div className="flex items-center gap-2">
-          <Avatar className="h-8 w-8">
+          <Avatar className="h-20 w-20">
             <AvatarImage src="/logo.png" alt="Temple Renew" />
             <AvatarFallback>TR</AvatarFallback>
           </Avatar>
