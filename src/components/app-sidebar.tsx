@@ -1,7 +1,6 @@
 "use client"
 
-import { Home, Book, Users, Settings, Menu, Compass, BookOpen } from "lucide-react"
-import Link from "next/link"
+import { Home, Compass, Trophy, BookOpen, Users, Settings } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -13,9 +12,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarFooter,
+  SidebarSeparator,
 } from "@/components/ui/sidebar"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 
 const mainNavItems = [
   {
@@ -30,12 +29,12 @@ const mainNavItems = [
   },
   {
     title: "Compete",
-    icon: BookOpen,
+    icon: Trophy,
     href: "/compete",
   },
   {
     title: "Practices",
-    icon: Book,
+    icon: BookOpen,
     href: "/practices",
   },
   {
@@ -52,65 +51,70 @@ const mainNavItems = [
 
 export function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader className="border-b border-border/50 p-4">
+    <Sidebar className="border-r border-border/50">
+      <SidebarHeader className="p-4">
         <div className="flex items-center gap-2">
-          <Avatar className="h-20 w-20">
+          <Avatar className="h-10 w-10">
             <AvatarImage src="/logo.png" alt="Temple Renew" />
             <AvatarFallback>TR</AvatarFallback>
           </Avatar>
-          <span className="font-semibold">Temple Renew</span>
+          <span className="text-xl font-semibold">Temple Renew</span>
         </div>
       </SidebarHeader>
+
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-sm font-medium">Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {mainNavItems.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                  <SidebarMenuButton asChild>
-                    <Link href={item.href} className="flex items-center gap-2">
-                      <item.icon className="h-4 w-4" />
+                  <SidebarMenuButton 
+                    asChild 
+                    className="text-base py-3"
+                  >
+                    <a href={item.href}>
+                      <item.icon className="h-5 w-5" />
                       <span>{item.title}</span>
-                    </Link>
+                    </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        <SidebarSeparator className="my-4" />
+
         <SidebarGroup>
-          <SidebarGroupLabel>Recent Practices</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-sm font-medium">Recent Practices</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {/* This could be dynamically populated */}
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/practice/meditation" className="flex items-center">
+                <SidebarMenuButton 
+                  asChild 
+                  className="text-base py-2"
+                >
+                  <a href="/practice/meditation">
                     <span>Daily Meditation</span>
-                  </Link>
+                  </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter className="border-t border-border/50 p-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Avatar className="h-8 w-8">
-              <AvatarImage src="/avatar.png" alt="User" />
-              <AvatarFallback>U</AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col">
-              <span className="text-sm font-medium">User Name</span>
-              <span className="text-xs text-muted-foreground">user@email.com</span>
-            </div>
+        <div className="flex items-center gap-2">
+          <Avatar className="h-9 w-9">
+            <AvatarImage src="/avatar.png" alt="User" />
+            <AvatarFallback>U</AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col">
+            <span className="text-sm font-medium">User Name</span>
+            <span className="text-xs text-muted-foreground">user@email.com</span>
           </div>
-          <Button variant="ghost" size="icon">
-            <Menu className="h-4 w-4" />
-          </Button>
         </div>
       </SidebarFooter>
     </Sidebar>

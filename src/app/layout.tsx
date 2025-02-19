@@ -9,8 +9,8 @@ import { AppSidebar } from "@/components/app-sidebar"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Yellow Black Dashboard",
-  description: "A dashboard with yellow and black theme",
+  title: "Temple Renew",
+  description: "Ancient wisdom and modern healing practices",
 }
 
 export default function RootLayout({
